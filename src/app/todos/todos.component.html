@@ -1,0 +1,32 @@
+<div class="sort-container">
+  <span class="name-sort" (click)="sortName(todosService.todos)">Name</span>
+  <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
+</div>
+<ul *ngIf="todosService.todos.length; else noTodos">
+    <li *ngFor="let todo of todosService.todos; let i = index" (click)="onChange(todo.id)">
+      <span [class.done]="todo.completed">
+          {{todo.title}}
+      </span>
+      
+      <small>{{todo.date | date: 'medium'}}</small>
+      
+      <div class="icon-container">
+          <div class="icon-button">
+            <button mat-fab color="primary" aria-label="Copy">
+              <mat-icon>library_books</mat-icon>
+            </button>
+          </div>
+          <div class="icon-button">
+              <button mat-fab color="warn" aria-label="Delete" (click)="removeTodo(todo.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </div>
+      </div>
+
+  </li>
+</ul>
+
+
+<ng-template #noTodos>
+  <p style="text-align: center;">На данный момент нет задач</p>
+</ng-template>

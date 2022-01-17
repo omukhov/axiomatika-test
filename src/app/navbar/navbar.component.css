@@ -1,0 +1,9 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.menu-item {
+    margin-right: 40px;
+}
