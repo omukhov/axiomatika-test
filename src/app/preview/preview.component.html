@@ -1,0 +1,28 @@
+<div class="sort-container">
+    <span class="name-sort" (click)="sortName(todosService.todos)">Name</span>
+    <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
+  </div>
+  <ul *ngIf="todosService.todos.length; else noTodos">
+      <li *ngFor="let todo of todosService.todos; let i = index">
+        <span [class.done]="todo.completed" (click)="onChange(todo.id)">
+            {{todo.title}}
+        </span>
+        
+        <small>{{todo.date | date: 'short'}}</small>
+        
+        <div class="icon-container">
+            <div class="icon-button">
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="upSwap(todo.id)"><mat-icon>arrow_upward</mat-icon></button>
+                <button mat-menu-item (click)="downSwap(todo.id)"><mat-icon>arrow_downward</mat-icon></button>
+                </mat-menu>
+            </div>
+        </div>
+  
+    </li>
+  </ul>
+  
+  <ng-template #noTodos>
+    <p style="text-align: center;">На данный момент нет задач</p>
+  </ng-template>

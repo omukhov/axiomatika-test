@@ -9,13 +9,17 @@ import { MaterialModule } from './material/material.module';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { EditorComponent } from './editor/editor.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
     TodoFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditorComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

@@ -24,17 +24,24 @@ export class TodosService {
     }
 
     public removeTodo(id: number): void {
-        let todos = this.getTodos();
-        console.log(todos.filter(t => t.id != id))
+        let todos = this.todos;
         todos = todos.filter(t => t.id != id);
         this.todos = todos;
         this.setLocalStorageTodos(todos);
     }
 
-    public addTodo(todo: Todo): void {
-        let todos = this.getTodos();
-        if (todo.title !== '') {
-            todos.push(todo);
+    public copyTodo(id: number): void {
+        let todos = this.todos;
+        let todo = todos.find(item => item.id == id);
+        this.addTodo(todo);
+    }
+
+    public addTodo(todo?: Todo): void {
+        let todos = this.todos;
+        if (todo !== undefined) {
+            if (todo.title !== '') {
+                todos.push(todo);
+            }
         }
         this.todos = todos;   
         this.setLocalStorageTodos(todos);    
@@ -42,5 +49,45 @@ export class TodosService {
 
     private setLocalStorageTodos(todos: Todo[]): void {
         localStorage.setItem('todos', JSON.stringify({todos: todos}))
+    }
+
+    public sortDate(array: any) {
+        function sortFunction(a: any,b: any){  
+          var dateA = new Date(a.date).getTime();
+          var dateB = new Date(b.date).getTime();
+          return dateA > dateB ? 1 : -1;  
+        };
+        array.sort(sortFunction);
+    }
+    
+    public sortName(array: any) {
+        function SortArray(x: any, y: any){
+          if (x.title < y.title) {return -1;}
+          if (x.title > y.title) {return 1;}
+          return 0;
+        }
+        array.sort(SortArray);
+    }
+
+    public upSwap(id: number) {
+        let todosArray = this.todos;
+        let index = todosArray.findIndex(item => item.id == id);
+        if (index - 1 !== -1) {
+            console.log(index);
+            [todosArray[index], todosArray[index - 1]] = [todosArray[index - 1], todosArray[index]] 
+        }
+        this.todos = todosArray;   
+        this.setLocalStorageTodos(todosArray); 
+    }
+    
+    public downSwap(id: number) {
+        let todosArray = this.todos;
+        let index = todosArray.findIndex(item => item.id == id);
+        if (index + 1 !== todosArray.length) {
+            console.log(index);
+            [todosArray[index], todosArray[index + 1]] = [todosArray[index + 1], todosArray[index]] 
+        }
+        this.todos = todosArray;   
+        this.setLocalStorageTodos(todosArray); 
     }
 }

@@ -19,30 +19,23 @@ export class TodosComponent implements OnInit {
   }
 
   removeTodo(id: number) {
-    console.log('я тут')
     this.todosService.removeTodo(id)
   }
 
   getTodos() {
     return this.todosService.getTodos();
   }
+
+  copyTodo(id: number) {
+    this.todosService.copyTodo(id);
+  }
   
   sortDate(array: any) {
-    function sortFunction(a: any,b: any){  
-      var dateA = new Date(a.date).getTime();
-      var dateB = new Date(b.date).getTime();
-      return dateA > dateB ? 1 : -1;  
-    };
-    array.sort(sortFunction);
+    this.todosService.sortDate(array);
   }
 
   sortName(array: any) {
-    function SortArray(x: any, y: any){
-      if (x.title < y.title) {return -1;}
-      if (x.title > y.title) {return 1;}
-      return 0;
-    }
-    array.sort(SortArray);
+    this.todosService.sortName(array);
   }
 }
 
