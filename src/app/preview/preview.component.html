@@ -3,8 +3,8 @@
     <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
   </div>
   <ul *ngIf="todosService.todos.length; else noTodos">
-      <li *ngFor="let todo of todosService.todos; let i = index">
-        <span [class.done]="todo.completed" (click)="onChange(todo.id)">
+      <li *ngFor="let todo of todosService.todos; let i = index" class="todo-container">
+        <span [class.done]="todo.completed" (click)="onChange(todo.id)" class="todo-title">
             {{todo.title}}
         </span>
         

@@ -24,20 +24,25 @@ export class TodosService {
     }
 
     public removeTodo(id: number): void {
-        let todos = this.todos;
+        let todos = this.getTodos();
         todos = todos.filter(t => t.id != id);
+        console.log(todos)
         this.todos = todos;
         this.setLocalStorageTodos(todos);
     }
 
     public copyTodo(id: number): void {
-        let todos = this.todos;
+        let todos = this.getTodos();
         let todo = todos.find(item => item.id == id);
-        this.addTodo(todo);
+        if (todo !== undefined) {
+            todo.id = Date.now();
+            todo.date = new Date();
+            this.addTodo(todo);
+        }
     }
 
-    public addTodo(todo?: Todo): void {
-        let todos = this.todos;
+    public addTodo(todo: Todo): void {
+        let todos = this.getTodos();
         if (todo !== undefined) {
             if (todo.title !== '') {
                 todos.push(todo);

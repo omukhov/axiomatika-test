@@ -1,10 +1,5 @@
 
-.icon-container {
-    width: 150px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+
 
 .icon-button {
     display: flex;
@@ -47,7 +42,17 @@ li {
 
 .date-sort {
     cursor: pointer;
-    margin-right: 300px;
+    margin-right: 275px;
     font-size: larger;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-title {
+    word-break:break-all;
+    width: 50%;
 }
