@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../shared/todos.service';
+import { Todo } from '../shared/todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -14,27 +15,27 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(id: number) { 
+  onChange(id: number): void { 
     this.todosService.onToggle(id)
   }
 
-  removeTodo(id: number) {
+  removeTodo(id: number): void {
     this.todosService.removeTodo(id)
   }
 
-  getTodos() {
+  getTodos(): Todo[] {
     return this.todosService.getTodos();
   }
 
-  copyTodo(id: number) {
+  copyTodo(id: number): void {
     this.todosService.copyTodo(id);
   }
   
-  sortDate(array: any) {
+  sortDate(array: any): void {
     this.todosService.sortDate(array);
   }
 
-  sortName(array: any) {
+  sortName(array: any): void {
     this.todosService.sortName(array);
   }
 }

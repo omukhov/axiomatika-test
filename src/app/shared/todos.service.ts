@@ -56,8 +56,8 @@ export class TodosService {
         localStorage.setItem('todos', JSON.stringify({todos: todos}))
     }
 
-    public sortDate(array: any) {
-        function sortFunction(a: any,b: any){  
+    public sortDate(array: Todo[]): void {
+        function sortFunction(a: Todo,b: Todo){  
           var dateA = new Date(a.date).getTime();
           var dateB = new Date(b.date).getTime();
           return dateA > dateB ? 1 : -1;  
@@ -65,8 +65,8 @@ export class TodosService {
         array.sort(sortFunction);
     }
     
-    public sortName(array: any) {
-        function SortArray(x: any, y: any){
+    public sortName(array: Todo[]): void {
+        function SortArray(x: Todo, y: Todo){
           if (x.title < y.title) {return -1;}
           if (x.title > y.title) {return 1;}
           return 0;
@@ -74,22 +74,20 @@ export class TodosService {
         array.sort(SortArray);
     }
 
-    public upSwap(id: number) {
-        let todosArray = this.todos;
+    public upSwap(id: number): void {
+        let todosArray = this.getTodos();
         let index = todosArray.findIndex(item => item.id == id);
         if (index - 1 !== -1) {
-            console.log(index);
             [todosArray[index], todosArray[index - 1]] = [todosArray[index - 1], todosArray[index]] 
         }
         this.todos = todosArray;   
         this.setLocalStorageTodos(todosArray); 
     }
     
-    public downSwap(id: number) {
-        let todosArray = this.todos;
+    public downSwap(id: number): void {
+        let todosArray = this.getTodos();
         let index = todosArray.findIndex(item => item.id == id);
         if (index + 1 !== todosArray.length) {
-            console.log(index);
             [todosArray[index], todosArray[index + 1]] = [todosArray[index + 1], todosArray[index]] 
         }
         this.todos = todosArray;   

@@ -13,23 +13,23 @@ export class PreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(id: number) { 
+  onChange(id: number): void { 
     this.todosService.onToggle(id)
   }
 
-  sortDate(array: any) {
+  sortDate(array: any): void {
     this.todosService.sortDate(array);
   }
 
-  sortName(array: any) {
+  sortName(array: any): void {
     this.todosService.sortName(array);
   }
 
-  upSwap(id: number) {
+  upSwap(id: number): void {
     this.todosService.upSwap(id);
   }
 
-  downSwap(id: number) {
+  downSwap(id: number): void {
     this.todosService.downSwap(id);
   }
 }
