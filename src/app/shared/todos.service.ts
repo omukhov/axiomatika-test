@@ -11,7 +11,17 @@ export interface Todo {
 @Injectable({providedIn: 'root'})
 export class TodosService {
 
-    todos: Todo[] = this.getTodos();
+    public todos: Todo[] = this.getTodos();
+
+    public mockTodo: Todo[] = [
+        {id: 1, title: 'first', completed: true, date: new Date()},
+        {id: 2, title: 'second', completed: false, date: new Date()},
+        {id: 3, title: 'third', completed: false, date: new Date()}
+    ];
+
+    ngOnInit(): void {
+        this.setLocalStorageTodos(this.mockTodo); 
+    }
     
     public getTodos(): Todo[] {
         let localStorageItem = JSON.parse(localStorage.getItem('todos') || '');
