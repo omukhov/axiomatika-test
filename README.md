@@ -7,4 +7,4 @@
 ![alt text](./img/second.png)
 
 # Ссылка на проект: 
-https://seylem-code.github.io/AxiomatikaTest/
+https://seylem-code.github.io/axiomatika-test/
