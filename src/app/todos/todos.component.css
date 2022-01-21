@@ -1,5 +1,7 @@
-
-
+.todos-container {
+    width: 50%;
+    margin: 0 auto;
+}
 
 .icon-button {
     display: flex;
@@ -30,19 +32,18 @@ li {
 
 .sort-container {
     display: flex;
-    justify-content: space-between;
 }
 
 .name-sort {
     cursor: pointer;
     margin-left: 20px;
+    width: 59%;
     font-size: larger;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .date-sort {
     cursor: pointer;
-    margin-right: 275px;
     font-size: larger;
     font-family: 'Courier New', Courier, monospace;
 }

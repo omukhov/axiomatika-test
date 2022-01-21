@@ -1,30 +1,33 @@
-<div class="sort-container">
-  <span class="name-sort" (click)="sortName(todosService.todos)">Name</span>
-  <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
-</div>
-<ul *ngIf="todosService.todos.length; else noTodos">
-    <li *ngFor="let todo of todosService.todos; let i = index" class="todo-container">
-      <span [class.done]="todo.completed" (click)="onChange(todo.id)" class="todo-title">
-          {{todo.title}}
-      </span>
-      
-      <small>{{todo.date | date: 'short'}}</small>
-      
-
-          <div class="icon-button">
-            <button mat-fab color="primary" aria-label="Copy" (click)="copyTodo(todo.id)">
-              <mat-icon>library_books</mat-icon>
-            </button>
-          </div>
-          <div class="icon-button">
-              <button mat-fab color="warn" aria-label="Delete" (click)="removeTodo(todo.id)">
-                <mat-icon>delete</mat-icon>
+<div class="todos-container">
+  <div class="sort-container">
+    <span class="name-sort" (click)="sortName(todosService.todos)">Name</span>
+    <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
+  </div>
+  
+  <ul *ngIf="todosService.todos.length; else noTodos">
+      <li *ngFor="let todo of todosService.todos; let i = index" class="todo-container">
+        <span [class.done]="todo.completed" (click)="onChange(todo.id)" class="todo-title">
+            {{todo.title}}
+        </span>
+        
+        <small>{{todo.date | date: 'short'}}</small>
+        
+  
+            <div class="icon-button">
+              <button mat-fab color="primary" aria-label="Copy" (click)="copyTodo(todo.id)">
+                <mat-icon>library_books</mat-icon>
               </button>
-          </div>
+            </div>
+            <div class="icon-button">
+                <button mat-fab color="warn" aria-label="Delete" (click)="removeTodo(todo.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+            </div> 
+    </li>
+  </ul>
+</div>
 
 
-  </li>
-</ul>
 
 <ng-template #noTodos>
   <p style="text-align: center;">На данный момент нет задач</p>

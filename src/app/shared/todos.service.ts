@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 
-
 export interface Todo {
     id: number,
     title: string,
@@ -11,7 +10,7 @@ export interface Todo {
 @Injectable({providedIn: 'root'})
 export class TodosService {
 
-    public todos: Todo[] = this.getTodos();
+    public todos: Todo[];
 
     public mockTodo: Todo[] = [
         {id: 1, title: 'first', completed: true, date: new Date()},
@@ -19,8 +18,13 @@ export class TodosService {
         {id: 3, title: 'third', completed: false, date: new Date()}
     ];
 
-    ngOnInit(): void {
-        this.setLocalStorageTodos(this.mockTodo); 
+    constructor() {
+        if (localStorage.length === 0) {
+            this.setLocalStorageTodos(this.mockTodo);
+            this.todos = this.getTodos();
+        } else {
+            this.todos = this.getTodos()
+         }
     }
     
     public getTodos(): Todo[] {

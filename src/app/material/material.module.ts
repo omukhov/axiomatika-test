@@ -16,7 +16,7 @@ const material  = [
   MatListModule,
   MatButtonModule,
   MatToolbarModule,
-  MatMenuModule
+  MatMenuModule,
 ]
 
 @NgModule({

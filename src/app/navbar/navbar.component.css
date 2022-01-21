@@ -1,10 +1,12 @@
+
+
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     margin-bottom: 4rem;
 }
 
-.menu-item {
+.navbar-item {
     margin-right: 40px;
 }
 
@@ -12,3 +14,4 @@ a {
     text-decoration: none;
     color: white;
 }
+

@@ -1,4 +1,5 @@
-<div class="sort-container">
+<div class="todos-container">
+  <div class="sort-container">
     <span class="name-sort" (click)="sortName(todosService.todos)">Name</span>
     <span class="date-sort" (click)="sortDate(todosService.todos)">Date</span>
   </div>
@@ -22,6 +23,9 @@
   
     </li>
   </ul>
+</div>
+
+
   
   <ng-template #noTodos>
     <p style="text-align: center;">На данный момент нет задач</p>
